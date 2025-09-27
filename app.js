@@ -12,6 +12,8 @@ import router from "./routes/routes.js"; // Importing main application routes
 import authrouter from "./routes/authRoutes.js"; // Importing authentication routes
 
 dotenv.config(); // Loading environment variables from .env file
+console.log("DEBUG - PORT:", process.env.PORT);
+console.log("DEBUG - MONGO_URI:", process.env.MONGO_URI);
 const app = express(); // Initializing express application
 
 //SESSION
@@ -32,7 +34,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(
+/*passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.CLIENT_ID,
@@ -45,7 +47,7 @@ passport.use(
       callback(null, profile);
     }
   )
-);
+);*/
 
 passport.serializeUser((user, done) => {
   done(null, user);
